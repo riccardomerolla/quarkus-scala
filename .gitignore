@@ -1,32 +1,39 @@
-# sbt
-# (may want to keep parts of 'project')
-bin/
-project/
+#Maven
 target/
-build/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
 
-# eclipse
-build
-.classpath
+# Eclipse
 .project
-.settings
-.worksheet
+.classpath
+.settings/
+bin/
 
-# intellij idea
-*.log
-*.iml
-*.ipr
-*.iws
+# IntelliJ
 .idea
+*.ipr
+*.iml
+*.iws
 
-# mac
+# NetBeans
+nb-configuration.xml
+
+# Visual Studio Code
+.vscode
+.factorypath
+
+# OSX
 .DS_Store
 
-# other?
-.history
-.scala_dependencies
-.cache
-.cache-main
+# Vim
+*.swp
+*.swo
 
-#general
-*.class
+# patch
+*.orig
+*.rej
+
+# Local environment
+.env

@@ -1,39 +1,58 @@
-Quarkus Scala REST Quickstart
-=============================
+# scala-quarkus Project
 
-This project illustrates how to use scala lang  and kotlin to develop a quarkus REST service.
-The [quarkus.io](https://quarkus.io) is a RedHat open source framework: a Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted from the best of breed Java libraries and standards
+This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-## json serialization
-GraalVM doesn't fully support reflection, but json-B works using reflection.
-There is a feature of the compiler that permits to declare which class need a reflection upon at runtime.
-You need to provide a json file or to use this quarkus annotation @RegisterForReflection on the classes in order to enable the reflection.
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
-## Clean and compile
-```
-mvn clean compile
+## Running the application in dev mode
+
+You can run your application in dev mode that enables live coding using:
+```shell script
+./mvnw compile quarkus:dev
 ```
 
-## Package
+> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+
+## Packaging and running the application
+
+The application can be packaged using:
+```shell script
+./mvnw package
 ```
-mvn package
+It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
+Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+
+If you want to build an _über-jar_, execute the following command:
+```shell script
+./mvnw package -Dquarkus.package.type=uber-jar
 ```
 
-## Package native
-```
-mvn package -Pnative
+The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+
+## Creating a native executable
+
+You can create a native executable using: 
+```shell script
+./mvnw package -Pnative
 ```
 
-## Run
-```
- java -jar ./target/rest-scala-kotlin-1.0-SNAPSHOT-runner.jar
-```
-
-## Test
-It uses kotlin to test both the kotlin and the scala rest endpoint
-```
-mvn test
+Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
+```shell script
+./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```
 
-  
-  
+You can then execute your native executable with: `./target/scala-quarkus-1.0.0-SNAPSHOT-runner`
+
+If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
+
+## Related Guides
+
+- RESTEasy JAX-RS ([guide](https://quarkus.io/guides/rest-json)): REST endpoint framework implementing JAX-RS and more
+
+## Provided Code
+
+### RESTEasy JAX-RS
+
+Easily start your RESTful Web Services
+
+[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
